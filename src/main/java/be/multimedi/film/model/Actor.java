@@ -21,4 +21,11 @@ public class Actor {
     @ManyToMany(mappedBy = "cast", fetch = FetchType.EAGER)
     private Set<Film> films = new HashSet<>();
 
+    public void addFilm(Film film){
+        films.add(film);
+        if(!film.getCast().contains(this)) {
+            film.addActor(this);
+        }
+    }
+
 }

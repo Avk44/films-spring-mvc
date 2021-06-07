@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,5 +30,19 @@ public class Film implements Serializable {
             joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private Set<Actor> cast = new HashSet<>();
+
+    public void addActor(Actor actor){
+        this.cast.add(actor);
+        if(!actor.getFilms().contains(this)){
+            actor.addFilm(this);
+        }
+    }
+
+    public void addActors(List<Actor> actors) {
+        for (Actor actor : actors) {
+            addActor(actor);
+        }
+    }
+
 
 }
