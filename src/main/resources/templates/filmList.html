@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Films</title>
+</head>
+<body>
+
+<h1>All films in database:</h1>
+<section>
+    <div th:each="film : ${films}">
+        <h2 th:text="${film.title}"></h2>
+        <h3 th:text="${film.releaseDate}"></h3>
+    </div>
+</section>
+
+</body>
+</html>
