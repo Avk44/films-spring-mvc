@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actors</title>
+</head>
+<body>
+
+<h1>All actors in database:</h1>
+
+<section>
+    <table>
+        <tr th:each="actor : ${actors}">
+            <td th:text="${actor.name}">Sam Neill</td>
+        </tr>
+    </table>
+</section>
+
+</body>
+</html>
