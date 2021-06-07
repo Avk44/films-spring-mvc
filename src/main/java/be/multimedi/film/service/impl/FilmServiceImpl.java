@@ -1,7 +1,8 @@
-package be.multimedi.film.service;
+package be.multimedi.film.service.impl;
 
 import be.multimedi.film.model.Film;
 import be.multimedi.film.repository.FilmRepository;
+import be.multimedi.film.service.inter.FilmService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
