@@ -16,6 +16,8 @@ public class Actor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(name = "photo_url")
+    private String photoUrl;
     @ManyToMany(mappedBy = "cast", fetch = FetchType.EAGER)
     private Set<Film> films = new HashSet<>();
 

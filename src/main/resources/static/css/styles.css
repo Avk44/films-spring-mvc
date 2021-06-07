@@ -1,0 +1,19 @@
+body {
+    background-color: #E74550;
+}
+
+.container {
+    background-color: #f3f3f3;
+}
+
+table.table tbody td{
+    vertical-align: middle;
+}
+
+table tbody tr:nth-child(odd){
+    background-color: #ffffff;
+}
+
+.navbar{
+    background-color: #e3f2fd;;
+}
