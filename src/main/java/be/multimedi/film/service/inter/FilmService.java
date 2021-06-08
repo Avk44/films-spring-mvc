@@ -9,4 +9,5 @@ public interface FilmService {
     Film retrieveById(Long id);
     List<Film> retrieveAll();
 
+    List<Film> getAllFilmsByTitle(String searchTerm);
 }

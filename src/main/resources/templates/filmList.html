@@ -12,13 +12,29 @@
 
  <div class="container min-vh-100">
      <h1>All films in database:</h1>
+     <form class="form-inline mb-4" method="get">
+         <input class="form-control mr-sm-2" th:name="title" type="search" placeholder="Search" aria-label="Search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+     </form>
+     <div th:if="${(param.title != null)}">Search results for: "<span th:text="${param.title}"></span>"</div>
         <section>
             <table class="table">
                 <tbody>
                 <tr th:each="film : ${films}">
-                    <td><img th:src="${film.posterUrl}" class="d-inline" alt=""
-                             src="https://picsum.photos/45/67" width="45" height="45"></td>
-                    <td th:text="${film.title} + ' (' + ${film.releaseDate.getYear()} + ')'"></td>
+                    <div>
+                        <td>
+                            <a th:href="@{'/film/' + ${film.id} }" href="#"><img th:src="${film.posterUrl}"
+                                                                                 class="d-inline"
+                                                                                 alt=""
+                                                                                 src="https://picsum.photos/45/67"
+                            with="45" height="45">
+                            </a>
+                        </td>
+                        <td><a th:href="@{'/film/' + ${film.id} }" href="#"
+                               th:text="${film.title} + ' (' + ${film.releaseDate.getYear()} + ')'">
+                        </a>
+                        </td>
+                    </div>
                 </tr>
                 </tbody>
             </table>

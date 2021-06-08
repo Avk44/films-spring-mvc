@@ -28,4 +28,9 @@ public class FilmServiceImpl implements FilmService {
         return filmRepository.findAll();
     }
 
+    @Override
+    public List<Film> getAllFilmsByTitle(String searchTerm) {
+        return filmRepository.findFilmsByTitleIsLike("%" + searchTerm + "%");
+    }
+
 }
