@@ -8,6 +8,7 @@ public interface FilmService {
     void register(Film film);
     Film retrieveById(Long id);
     List<Film> retrieveAll();
+    void deleteFilmById(Long id);
 
     List<Film> getAllFilmsByTitle(String searchTerm);
 }

@@ -29,6 +29,11 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
+    public void deleteFilmById(Long id) {
+        filmRepository.deleteById(id);
+    }
+
+    @Override
     public List<Film> getAllFilmsByTitle(String searchTerm) {
         return filmRepository.findFilmsByTitleIsLike("%" + searchTerm + "%");
     }

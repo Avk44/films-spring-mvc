@@ -10,46 +10,50 @@
 <body>
 <header th:replace="fragments/header.html :: header"></header>
 
- <div class="container min-vh-100">
-     <h1>All films in database:</h1>
-     <form class="form-inline mb-4" method="get">
-         <input class="form-control mr-sm-2" th:name="title" type="search" placeholder="Search" aria-label="Search">
-         <button class="btn btn-outline-success mr-5 my-2 my-sm-0" type="submit">Search</button>
-         <a th:href="@{/film/new}">
-             <button class="btn btn-warning ml-5 my-2 my-sm-0" type="button">+ New Film</button>
-         </a>
+<div class="container min-vh-100">
+    <h1>All films in database:</h1>
+    <form class="form-inline mb-4" method="get">
+        <input class="form-control mr-sm-2" th:name="title" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success mr-5 my-2 my-sm-0" type="submit">Search</button>
+        <a th:href="@{/film/new}">
+            <button class="btn btn-warning ml-5 my-2 my-sm-0" type="button">+ New Film</button>
+        </a>
 
-     </form>
-     <div th:if="${(param.title != null)}">Search results for: "<span th:text="${param.title}"></span>"</div>
-        <section>
-            <table class="table">
-                <tbody>
-                <tr th:each="film : ${films}">
-                    <div>
-                        <td>
-                            <div class="row">
-                                <a th:href="@{'/film/' + ${film.id} }" href="#"><img th:src="${film.posterUrl}"
-                                                                                    class="d-inline"
-                                                                                    alt=""
-                                                                                    src="https://picsum.photos/45/67"
-                                                                                    with="45" height="45">
-                            </a>
-                                <a th:href="@{'/film/' + ${film.id} + '/edit' }">
-                                    <button class="btn btn-warning ml-5 my-2 my-sm-0" type="button">EDIT</button>
-                                </a>
-                                <a th:href="@{'/film/' + ${film.id} + '/delete' }">
-                                    <button class="btn btn-warning ml-2 my-2 my-sm-0" type="button">DELETE</button>
-                                </a></div>
-                        </td>
-                        <td><a th:href="@{'/film/' + ${film.id} }" href="#"
-                               th:text="${film.title} + ' (' + ${film.releaseDate.getYear()} + ')'">
+    </form>
+    <div th:if="${(param.title != null)}">Search results for: "<span th:text="${param.title}"></span>"</div>
+    <section>
+        <table class="table">
+            <tbody>
+            <tr th:each="film : ${films}">
+                <div>
+                    <td>
+                        <a th:href="@{'/film/' + ${film.id} }" href="#"><img th:src="${film.posterUrl}"
+                                                                             class="d-inline"
+                                                                             alt=""
+                                                                             src="https://picsum.photos/45/67"
+                                                                             with="45" height="45">
                         </a>
-                        </td>
-                    </div>
-                </tr>
-                </tbody>
-            </table>
-        </section>
+
+                    </td>
+                    <td><a th:href="@{'/film/' + ${film.id} }" href="#"
+                           th:text="${film.title} + ' (' + ${film.releaseDate.getYear()} + ')'">
+                    </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/film/' + ${film.id} + '/edit' }">
+                            <button class="btn btn-warning my-2 my-sm-0" type="button">EDIT</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{/films}">
+                            <button class="btn btn-warning my-2 my-sm-0" type="button">DELETE</button>
+                        </a>
+                    </td>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+    </section>
 </div>
 
 <th:block th:include="fragments/cdn.html :: script-cdn"></th:block>
