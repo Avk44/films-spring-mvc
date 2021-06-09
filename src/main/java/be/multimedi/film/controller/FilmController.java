@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -34,6 +35,19 @@ public class FilmController {
     public String fetchAllFilmsByTitle(Model model,@RequestParam(name = "title") String searchTerm){
         List<Film> searchedFilms = filmService.getAllFilmsByTitle(searchTerm);
         model.addAttribute("films",searchedFilms);
+        return "filmList";
+    }
+
+
+    @GetMapping("/film/new")
+    public String showAddFilmForm(Model model){
+        model.addAttribute("film",new Film());
+        return "newFilmForm";
+    }
+
+    @PostMapping("/film/new")
+    public String addNewFilm(Film film){
+        filmService.register(film);
         return "filmList";
     }
 

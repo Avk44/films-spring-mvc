@@ -2,6 +2,7 @@ package be.multimedi.film.model;
 
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,6 +23,7 @@ public class Film implements Serializable {
     private Long id;
     private String title;
     @Column(name = "release_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
     @Column(name = "poster_url")
     private String posterUrl;

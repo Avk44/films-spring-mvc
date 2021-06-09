@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Film</title>
+  <th:block th:include="fragments/cdn.html :: head-cdn"></th:block>
+  <th:block th:include="fragments/custom.html :: head-custom"></th:block>
+</head>
+<body>
+<header th:replace="fragments/header.html :: header"></header>
+<div class="container">
+  <h1 class="mb-3 mt-3" >New Film</h1>
+  <section>
+    <div class="row">
+      <div class="col-md-auto">
+        <form action="" th:action="@{/film/new}" th:object="${film}" method="post">
+            <input  type="text" name="title" class="form-control mb-4" placeholder="Title"/>
+            <input  type="date" name="releaseDate" class="form-control mb-4" >
+            <input type="text" name="posterUrl" class="form-control mb-4" placeholder="Poster url">
+          <button class="btn btn-outline-primary mb-4">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+<th:block th:include="fragments/cdn.html :: script-cdn"></th:block>
+</body>
+</html>
