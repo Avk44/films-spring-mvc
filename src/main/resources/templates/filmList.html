@@ -27,12 +27,19 @@
                 <tr th:each="film : ${films}">
                     <div>
                         <td>
-                            <a th:href="@{'/film/' + ${film.id} }" href="#"><img th:src="${film.posterUrl}"
-                                                                                 class="d-inline"
-                                                                                 alt=""
-                                                                                 src="https://picsum.photos/45/67"
-                            with="45" height="45">
+                            <div class="row">
+                                <a th:href="@{'/film/' + ${film.id} }" href="#"><img th:src="${film.posterUrl}"
+                                                                                    class="d-inline"
+                                                                                    alt=""
+                                                                                    src="https://picsum.photos/45/67"
+                                                                                    with="45" height="45">
                             </a>
+                                <a th:href="@{'/film/' + ${film.id} + '/edit' }">
+                                    <button class="btn btn-warning ml-5 my-2 my-sm-0" type="button">EDIT</button>
+                                </a>
+                                <a th:href="@{'/film/' + ${film.id} + '/delete' }">
+                                    <button class="btn btn-warning ml-2 my-2 my-sm-0" type="button">DELETE</button>
+                                </a></div>
                         </td>
                         <td><a th:href="@{'/film/' + ${film.id} }" href="#"
                                th:text="${film.title} + ' (' + ${film.releaseDate.getYear()} + ')'">

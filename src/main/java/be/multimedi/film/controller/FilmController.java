@@ -51,4 +51,17 @@ public class FilmController {
         return "filmList";
     }
 
+    @GetMapping("/film/{id}/edit")
+    public String showEditFilmForm(Model model, @PathVariable Long id){
+        Film film = filmService.retrieveById(id);
+        model.addAttribute("film", film);
+        return "editFilmForm";
+    }
+
+    @PostMapping("/film/{id}/edit")
+    public String editFilm(Film film){
+        filmService.register(film);
+        return "filmList";
+    }
+
 }
